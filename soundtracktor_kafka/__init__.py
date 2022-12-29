@@ -4,7 +4,7 @@ import os
 # Set up the Kafka consumer
 # value_deserializer=lambda x: _safe_utf8_decode(x),
 # move into python-kafka-module
-def create_consumer(*, topic, group_id)
+def create_consumer(*, topic, group_id):
     return KafkaConsumer(
         topic,  # topic to consume from
         group_id=group_id,  # consumer group to join
@@ -19,7 +19,7 @@ def create_consumer(*, topic, group_id)
     )
 
 # Set up the Kafka producer
-def create_producer(*, group_id)
+def create_producer(*, group_id):
     return KafkaProducer(
         group_id=group_id,
         bootstrap_servers=[os.environ.get('KAFKA_BROKER_0')],  # list of Kafka brokers
