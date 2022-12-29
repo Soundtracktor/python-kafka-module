@@ -19,7 +19,7 @@ def create_consumer(*, topic, group_id):
     )
 
 # Set up the Kafka producer
-def create_producer:
+def create_producer():
     return KafkaProducer(
         bootstrap_servers=[os.environ.get('KAFKA_BROKER_0')],  # list of Kafka brokers
         value_serializer=lambda x: json.dumps(x).encode('utf-8'), # encode the message value as UTF-8
