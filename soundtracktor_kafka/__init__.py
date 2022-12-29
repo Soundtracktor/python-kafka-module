@@ -1,5 +1,6 @@
 from kafka import KafkaConsumer, KafkaProducer
 import os
+import json
 
 # Set up the Kafka consumer
 # value_deserializer=lambda x: _safe_utf8_decode(x),
