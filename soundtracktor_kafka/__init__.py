@@ -13,7 +13,6 @@ def create_consumer(*, topic, group_id):
         auto_offset_reset='earliest',  # start consuming from the earliest message
         enable_auto_commit=True,  # disable auto-commit of offsets
         value_deserializer=lambda x: json.loads(x.decode('utf-8')), # decode the message value as UTF-8
-        key_deserializer=lambda x: x.decode('utf-8') if x else None,  # decode the message key as UTF-8
         api_version=None,
         max_poll_records=200,
         session_timeout_ms=60000,
