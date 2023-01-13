@@ -15,7 +15,7 @@ def create_consumer(*, topic, group_id):
         value_deserializer=lambda x: json.loads(x.decode('utf-8')), # decode the message value as UTF-8
         api_version=None,
         max_poll_records=200,
-        session_timeout_ms=60000,
+        session_timeout_ms=os.environ.get('SESSION_TIMEOUT_MS', 60000), # 1 min
     )
 
 # Set up the Kafka producer
