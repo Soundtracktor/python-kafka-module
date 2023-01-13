@@ -10,12 +10,12 @@ def create_consumer(*, topic, group_id):
         topic,  # topic to consume from
         group_id=group_id,  # consumer group to join
         bootstrap_servers=[os.environ.get('KAFKA_BROKER_0')],  # list of Kafka brokers
-        auto_offset_reset='earliest',  # start consuming from the earliest message
+        auto_offset_reset=os.environ.get('KAFKA_AUTO_OFFSET_RESET', 'earliest'),  # start consuming from the earliest message
         enable_auto_commit=True,  # disable auto-commit of offsets
         value_deserializer=lambda x: json.loads(x.decode('utf-8')), # decode the message value as UTF-8
         api_version=None,
         max_poll_records=200,
-        session_timeout_ms=os.environ.get('SESSION_TIMEOUT_MS', 60000), # 1 min
+        session_timeout_ms=os.environ.get('KAFKA_SESSION_TIMEOUT_MS', 60000), # 1 min
     )
 
 # Set up the Kafka producer
